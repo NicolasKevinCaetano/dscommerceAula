@@ -14,6 +14,8 @@ public class User {
     private Long id;   // id com minúscula
 
     private String nome;   // atributos com minúscula
+
+    @Column(unique = true)
     private String email;
     private String phone;
     private LocalDate birthDate;
