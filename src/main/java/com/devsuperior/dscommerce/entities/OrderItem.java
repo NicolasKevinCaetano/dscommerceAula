@@ -3,6 +3,7 @@ package com.devsuperior.dscommerce.entities;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Objects;
 
 
 @Entity
@@ -52,6 +53,19 @@ public class OrderItem {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderItem orderItem = (OrderItem) o;
+        return Objects.equals(id, orderItem.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
 

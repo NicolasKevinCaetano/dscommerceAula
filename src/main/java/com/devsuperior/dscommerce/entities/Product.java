@@ -1,10 +1,7 @@
 package com.devsuperior.dscommerce.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -102,5 +99,18 @@ public class Product {
 
     public List<Order> getOrders() {
         return items.stream().map(x -> x.getOrder()).toList();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

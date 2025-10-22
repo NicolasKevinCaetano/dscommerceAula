@@ -4,6 +4,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class OrderItemPK implements Serializable {
@@ -35,4 +36,18 @@ public class OrderItemPK implements Serializable {
         this.product = product;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderItemPK that = (OrderItemPK) o;
+        return Objects.equals(order, that.order) && Objects.equals(product, that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hashCode(order);
+        result = 31 * result + Objects.hashCode(product);
+        return result;
+    }
 }
