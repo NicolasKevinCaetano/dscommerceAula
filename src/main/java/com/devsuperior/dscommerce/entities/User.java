@@ -13,11 +13,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;   // id com minúscula
 
-    private String nome;   // atributos com minúscula
 
     @Column(unique = true)
     private String email;
     private String phone;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
     private String password;
 
@@ -26,7 +29,7 @@ public class User {
 
     // Construtor com argumentos (sem id porque é gerado pelo banco)
     public User(String nome, String email, String phone, LocalDate birthDate, String password) {
-        this.nome = nome;
+        this.name = nome;
         this.email = email;
         this.phone = phone;
         this.birthDate = birthDate;
@@ -48,12 +51,12 @@ public class User {
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
     public void setNome(String nome) {
 
-        this.nome = nome;
+        this.name = nome;
     }
 
     public String getEmail() {
