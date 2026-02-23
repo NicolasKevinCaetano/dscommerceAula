@@ -22,10 +22,8 @@ public class ProductDTO {
 
     private String imgUrl;
 
-    // 🔥 OBRIGATÓRIO — Jackson precisa disso!
     public ProductDTO() {}
 
-    // Construtor para converter da entidade
     public ProductDTO(Product entity) {
         this.id = entity.getId();
         this.name = entity.getName();
@@ -34,7 +32,6 @@ public class ProductDTO {
         this.imgUrl = entity.getImgUrl();
     }
 
-    // 🔥 OBRIGATÓRIO — getters e setters
 
     public Long getId() {
         return id;
